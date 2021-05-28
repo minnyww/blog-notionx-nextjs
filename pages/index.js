@@ -71,7 +71,7 @@ export default function Home({ recordMap }) {
           pdf: Pdf,
           equation: Equation,
         }}
-        showCollectionViewDropdown={false}
+        showCollectionViewDropdown={true}
         // showTableOfContents={true}
         // previewImages={true}
       />
