@@ -32,7 +32,7 @@ export default function Home({ recordMap }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div style={{ padding: "1rem" }}>
-        <h2>Min x Notion</h2>
+        <h2>Home</h2>
       </div>
       <NotionRenderer
         suppressHydrationWarning
