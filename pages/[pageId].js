@@ -1,6 +1,10 @@
 import Head from "next/head";
 
-import { getPageTitle, getAllPagesInSpace } from "notion-utils";
+import {
+  getPageTitle,
+  getAllPagesInSpace,
+  getPageProperty,
+} from "notion-utils";
 import { NotionAPI } from "notion-client";
 import { NotionRenderer, CollectionRow, Code } from "react-notion-x";
 // import { useRouter } from "next/router";
@@ -80,12 +84,20 @@ export default function NotionPage({ recordMap }) {
     return null;
   }
 
+  const keys = Object.keys(recordMap?.block || {});
+  const block = recordMap?.block?.[keys[0]]?.value;
   const title = getPageTitle(recordMap);
+  const description = getPageProperty("Description", block, recordMap);
+  console.log("description : ", description);
 
   return (
     <>
       <Head>
-        <meta name="description" content="React Notion X demo renderer." />
+        <meta name="description" content={description} />
+        <meta property="og:description" content={description} />
+        <meta name="twitter:description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta name="twitter:title" content={title} />
         <title>{title}</title>
       </Head>
       <div style={{ maxWidth: "100vw", overflowX: "hidden" }}>
