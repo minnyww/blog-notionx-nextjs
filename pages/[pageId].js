@@ -88,7 +88,6 @@ export default function NotionPage({ recordMap }) {
   const block = recordMap?.block?.[keys[0]]?.value;
   const title = getPageTitle(recordMap);
   const description = getPageProperty("Description", block, recordMap);
-  console.log("description : ", description);
 
   return (
     <>

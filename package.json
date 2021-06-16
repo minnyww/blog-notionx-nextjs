@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "10.2.3",
+    "next": "^11.0.0",
     "notion-client": "^4.6.2",
     "notion-utils": "^4.6.2",
     "react": "17.0.2",
