@@ -3,6 +3,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { NotionAPI } from "notion-client";
 import { NotionRenderer, CollectionRow, Code } from "react-notion-x";
+import { useEffect, useState } from "react";
 // import { useRouter } from "next/router";
 
 const Pdf = dynamic(() =>
@@ -23,16 +24,58 @@ const Modal = dynamic(
   { ssr: false },
 );
 
+const COLORS = ["#d96f68", "#7666a7", "#fa0566"];
 export default function Home({ recordMap }) {
+  const [currentBroswerTheme, setBrowserTheme] = useState("");
+  const changeBrowswerTheme = () => {
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+
+    const COLOR = COLORS[Math.floor(Math.random() * COLORS?.length)];
+    themeColor.setAttribute("content", COLOR);
+    setBrowserTheme(COLOR.toString());
+  };
+  // useEffect(() => {
+  //   const motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
+
+  //   // Check if users don't have a preference for reduced motion
+  //   if (motion.matches) {
+  //     let scheme = document.querySelector('meta[name="theme-color"]');
+  //     let hue = 0;
+  //     let color;
+
+  //     setInterval(() => {
+  //       color = `hsl(${(hue += 5)} 50% 30%)`;
+  //       // document.body.style.background = color;
+  //       scheme.setAttribute("content", color);
+  //     }, 50);
+  //   }
+  // }, []);
+
   return (
     <div suppressHydrationWarning>
       <Head>
         <title>Min with Notion</title>
         <meta name="description" content="Min with notion" />
         <link rel="icon" href="/favicon.ico" />
+
+        <meta
+          name="theme-color"
+          content={"#7666a7"}
+          // media="(prefers-color-scheme: dark)"
+        />
       </Head>
-      <div style={{ padding: "1rem" }}>
+      <div
+        style={{
+          padding: "1rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         <h2>Home</h2>
+        <button onClick={() => changeBrowswerTheme()}>
+          Random Broswer Theme
+        </button>
       </div>
       <NotionRenderer
         suppressHydrationWarning

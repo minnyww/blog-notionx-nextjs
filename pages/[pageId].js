@@ -10,6 +10,8 @@ import { NotionRenderer, CollectionRow, Code } from "react-notion-x";
 // import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
+// must import react-notion-x component with dynamic if error ssr use srr false to resolve error
+
 const Pdf = dynamic(() =>
   import("react-notion-x").then((notion) => notion.Pdf),
 );
@@ -59,7 +61,10 @@ export async function getStaticPaths() {
     };
   }
 
+  // in url params
   const rootNotionPageId = "12ee34fde6824900a7cd367792703941";
+
+  //f12 and go to network => in api https://www.notion.so/api/v3/getSpaces response have space value get its
   const rootNotionSpaceId = "0e72fe3e-b360-476a-8a5a-e3629b705856";
 
   const pages = await getAllPagesInSpace(

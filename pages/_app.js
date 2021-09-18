@@ -26,8 +26,20 @@ import "katex/dist/katex.min.css";
 // here we're bringing in any languages we want to support for
 // syntax highlighting via Notion's Code block
 
+// import Head from "next/head";
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      {/* <Head>
+        <meta
+          name="theme-color"
+          content={"#ecd96f"}
+          // media="(prefers-color-scheme: dark)"
+        />
+      </Head> */}
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp;
