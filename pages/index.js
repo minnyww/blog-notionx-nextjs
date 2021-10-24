@@ -3,7 +3,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { NotionAPI } from "notion-client";
 import { NotionRenderer, CollectionRow, Code } from "react-notion-x";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // import { useRouter } from "next/router";
 
 const Pdf = dynamic(() =>
